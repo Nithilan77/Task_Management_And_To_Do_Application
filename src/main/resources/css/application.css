@@ -1,0 +1,471 @@
+/* Elegant & Professional Task Management Styles
+   - Clean typography
+   - Deep header and subtle glass sidebar
+   - Calm neutral backgrounds with a single accent color
+   - Polished buttons, inputs and table presentation
+*/
+
+/* -- Global / Root ------------------------------------------------------- */
+.root {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #f4f7f9 0%, #eef3f6 100%);
+    -fx-font-family: "Segoe UI", "Inter", "Roboto", system-ui, sans-serif;
+    -fx-font-size: 13.5px;
+    -fx-text-fill: #0f1724; /* dark slate */
+}
+
+/* Use a subtle card for main content to lift it from the background */
+.main-content {
+    -fx-background-color: rgba(255,255,255,0.98);
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(15,23,36,0.06), 20, 0, 0, 6);
+    -fx-padding: 22;
+}
+
+/* -- Header ------------------------------------------------------------- */
+.header {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #0b1b2b 0%, #153041 100%);
+    -fx-padding: 28 30;
+    -fx-spacing: 12;
+    -fx-effect: dropshadow(gaussian, rgba(9,15,22,0.18), 18, 0, 0, 6);
+}
+
+.header .title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+    -fx-fill: white;
+    -fx-letter-spacing: 0.2px;
+}
+
+.header .subtitle {
+    -fx-font-size: 13px;
+    -fx-fill: rgba(255,255,255,0.85);
+}
+
+.logout-button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #e85f4a 0%, #c74b3a 100%);
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 8 16;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+.logout-button:hover { -fx-opacity: 0.95; -fx-translate-y: -1; }
+
+/* -- Sidebar (glassy panel) --------------------------------------------- */
+.sidebar {
+    -fx-background-color: rgba(20,36,50,0.75);
+    -fx-background-insets: 0;
+    -fx-background-radius: 12;
+    -fx-padding: 26;
+    -fx-spacing: 18;
+    -fx-pref-width: 300;
+    -fx-effect: dropshadow(gaussian, rgba(7,12,18,0.12), 14, 0, 0, 6);
+}
+
+.sidebar .heading {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-fill: rgba(255,255,255,0.95);
+}
+
+.sidebar .text { -fx-fill: rgba(255,255,255,0.9); }
+
+.stats-container {
+    -fx-background-color: rgba(255,255,255,0.04);
+    -fx-border-color: rgba(255,255,255,0.06);
+    -fx-border-width: 1;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 16;
+    -fx-spacing: 10;
+}
+
+.stats-row { -fx-spacing: 6; -fx-alignment: center-left; }
+.stats-value { -fx-font-weight: 700; -fx-fill: white; }
+.stats-label { -fx-fill: rgba(255,255,255,0.8); }
+
+/* Accent / Brand color */
+/* Chosen for a refined, professional feel */
+:root {
+    -accent: #1f8fa6; /* teal-blue */
+    -muted: #9aa7b1;
+    -danger: #e25b4a;
+}
+
+/* -- Buttons ------------------------------------------------------------ */
+.primary-button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, derive(-accent,20%), -accent);
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 10 20;
+    -fx-font-weight: 700;
+}
+
+.primary-button:hover { -fx-effect: dropshadow(gaussian, rgba(31,143,166,0.28), 10, 0, 0, 4); -fx-translate-y: -2; }
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(15,23,36,0.08);
+    -fx-text-fill: #0f1724;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 10 18;
+    -fx-font-weight: 600;
+}
+
+.secondary-button:hover { -fx-background-color: rgba(31,143,166,0.06); }
+
+.tertiary-button { -fx-text-fill: -accent; -fx-background-color: transparent; }
+
+.button { -fx-cursor: hand; }
+
+/* Nice CTA style used by Add New Task in screenshot */
+.add-task-button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #3fb28f 0%, #1f8fa6 100%);
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-padding: 12 22;
+    -fx-font-weight: 800;
+}
+
+/* Danger / Clear Completed */
+.clear-button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, rgba(226,91,74,0.95), rgba(199,75,58,0.95));
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+}
+
+/* -- Inputs (Search, TextField, ComboBox) ------------------------------- */
+.search-field, .text-field, .combo-box, .login-field {
+    -fx-background-color: rgba(255,255,255,0.98);
+    -fx-border-color: rgba(15,23,36,0.06);
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 12;
+    -fx-font-size: 13px;
+}
+
+.search-field:focused, .text-field:focused, .combo-box:focused, .login-field:focused {
+    -fx-border-color: -accent;
+    -fx-effect: dropshadow(gaussian, rgba(31,143,166,0.18), 8, 0, 0, 2);
+}
+
+.filter-combo {
+    -fx-pref-width: 120;
+    -fx-pref-height: 40;
+}
+
+.filter-combo .list-cell { -fx-padding: 8 12; }
+
+/* -- Table / Task list -------------------------------------------------- */
+.task-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 13px;
+}
+
+.task-table .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(15,23,36,0.75);
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-padding: 12 10 10 10;
+    -fx-border-color: transparent;
+}
+
+.task-table .table-row-cell {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, rgba(255,255,255,1), rgba(249,251,252,1));
+    -fx-border-color: transparent;
+    -fx-padding: 6 0;
+}
+
+.task-table .table-row-cell:hover { -fx-background-color: rgba(31,143,166,0.03); }
+
+.task-table .table-row-cell:selected {
+    -fx-background-color: rgba(31,143,166,0.06);
+    -fx-border-color: rgba(31,143,166,0.12);
+    -fx-border-width: 0 0 0 3;
+}
+
+.task-table .table-cell { -fx-padding: 10 12; -fx-text-fill: #0f1724; }
+
+/* Subtle zebra rows for readability */
+.task-table .table-row-cell:even { -fx-background-color: rgba(250,251,252,1); }
+
+/* Priority colors (muted, professional) */
+.priority-high { -fx-text-fill: #c94b42; -fx-font-weight: 700; }
+.priority-medium { -fx-text-fill: #d78b2c; -fx-font-weight: 700; }
+.priority-low { -fx-text-fill: #2f9a6b; -fx-font-weight: 700; }
+
+/* Date / meta style */
+.meta { -fx-text-fill: rgba(15,23,36,0.54); -fx-font-size: 12px; }
+
+/* -- Forms / Login ----------------------------------------------------- */
+.login-container {
+    -fx-background-color: rgba(255,255,255,0.98);
+    -fx-background-radius: 12;
+    -fx-padding: 28;
+    -fx-effect: dropshadow(gaussian, rgba(7,12,18,0.08), 14, 0, 0, 6);
+}
+
+.login-button { -fx-background-color: -accent; -fx-text-fill: white; -fx-font-weight: 700; }
+
+/* -- Checkbox / selection ---------------------------------------------- */
+.check-box .box { -fx-background-color: white; -fx-border-color: rgba(15,23,36,0.08); }
+.check-box:selected .box { -fx-background-color: -accent; -fx-border-color: -accent; }
+
+/* -- Typography helpers ------------------------------------------------ */
+.muted { -fx-fill: -muted; }
+.uppercase { -fx-text-transform: uppercase; }
+
+/* -- Misc small utilities ---------------------------------------------- */
+.separator { -fx-background-color: rgba(15,23,36,0.06); -fx-pref-height: 1; }
+.pill { -fx-background-radius: 999; -fx-padding: 6 10; }
+
+/* End of elegant stylesheet  */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #bdc3c7;
+    -fx-background-radius: 5;
+}
+
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: #95a5a6;
+}
+
+/* Dialog Styles */
+.dialog-pane {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 0 0 1 0;
+}
+
+.dialog-pane .button-bar {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 15;
+}
+
+/* Alert Styles */
+.alert {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sidebar {
+        -fx-pref-width: 200;
+    }
+    
+    .task-table .table-cell {
+        -fx-padding: 6 8;
+        -fx-font-size: 12px;
+    }
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { translate-x: -20; opacity: 0; }
+    to { translate-x: 0; opacity: 1; }
+}
+
+.login-container {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+/* Focus and Selection Styles */
+.focused {
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.3), 5, 0, 0, 0);
+}
+
+.selected {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #1976d2;
+}
+
+/* Status Indicators */
+.status-pending {
+    -fx-text-fill: #f39c12;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(243,156,18,0.3), 1, 0, 0, 0);
+}
+
+.status-completed {
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(39,174,96,0.3), 1, 0, 0, 0);
+}
+
+.status-overdue {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(231,76,60,0.3), 1, 0, 0, 0);
+}
+
+/* Statistics text styling */
+.stats-text {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgb(255, 255, 255), 1, 0, 0, 0);
+}
+
+.stats-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(255,255,255,0.9);
+}
+
+/* Dialog Styling */
+.dialog-pane {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 15 20;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content {
+    -fx-background-color: white;
+    -fx-padding: 20;
+}
+
+.dialog-pane .button-bar {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 15 20;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 8 16;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #2980b9;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.4), 5, 0, 0, 0);
+}
+
+.dialog-pane .button.cancel-button {
+    -fx-background-color: #95a5a6;
+}
+
+.dialog-pane .button.cancel-button:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+/* Dialog form elements */
+.dialog-pane .text-field, .dialog-pane .text-area, .dialog-pane .combo-box, .dialog-pane .date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: #2c3e50;
+}
+
+.dialog-pane .text-field:focused, .dialog-pane .text-area:focused, .dialog-pane .combo-box:focused, .dialog-pane .date-picker:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.3), 3, 0, 0, 0);
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .check-box {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+}
+
+.dialog-pane .check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.dialog-pane .check-box:selected .box {
+    -fx-background-color: #3498db;
+    -fx-border-color: #2980b9;
+}
+
+/* ComboBox in dialogs */
+.dialog-pane .combo-box .list-cell {
+    -fx-text-fill: #2c3e50;
+    -fx-background-color: white;
+}
+
+.dialog-pane .combo-box .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.dialog-pane .combo-box .list-cell:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #2c3e50;
+}
+
+.dialog-pane .combo-box .list-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}

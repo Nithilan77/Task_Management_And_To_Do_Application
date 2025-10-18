@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanager.controller.DashboardController">
+   <top>
+      <VBox spacing="10.0" styleClass="header">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Text fx:id="welcomeText" fill="white" text="Welcome, User!" textAlignment="CENTER" wrappingWidth="200.0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#onLogout" styleClass="logout-button" text="Logout" />
+               </children>
+            </HBox>
+            
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <TextField fx:id="searchField" promptText="Search tasks..." styleClass="search-field">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  
+                  <ComboBox fx:id="priorityFilter" promptText="Filter by Priority" styleClass="filter-combo" />
+                  
+                  <ComboBox fx:id="statusFilter" promptText="Filter by Status" styleClass="filter-combo" />
+                  
+                  <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#onRefresh" styleClass="action-button" text="Refresh" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </top>
+   
+   <left>
+      <VBox spacing="10.0" styleClass="sidebar">
+         <children>
+            <Text fill="white" text="Quick Stats" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+            
+            <VBox spacing="5.0" styleClass="stats-container">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Text styleClass="stats-label" text="Total Tasks:" />
+                        <Text fx:id="totalTasksText" styleClass="stats-text" text="0" />
+                     </children>
+                  </HBox>
+                  
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Text styleClass="stats-label" text="Completed:" />
+                        <Text fx:id="completedTasksText" styleClass="stats-text status-completed" text="0" />
+                     </children>
+                  </HBox>
+                  
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Text styleClass="stats-label" text="Pending:" />
+                        <Text fx:id="pendingTasksText" styleClass="stats-text status-pending" text="0" />
+                     </children>
+                  </HBox>
+                  
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Text styleClass="stats-label" text="High Priority:" />
+                        <Text fx:id="highPriorityTasksText" styleClass="stats-text status-overdue" text="0" />
+                     </children>
+                  </HBox>
+                  
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Text styleClass="stats-label" text="Overdue:" />
+                        <Text fx:id="overdueTasksText" styleClass="stats-text status-overdue" text="0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <Separator />
+            
+            <VBox spacing="10.0">
+               <children>
+                  <Button fx:id="addTaskButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#onAddTask" styleClass="primary-button" text="Add New Task" />
+                  <Button fx:id="clearCompletedButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#onClearCompleted" styleClass="secondary-button" text="Clear Completed" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </left>
+   
+   <center>
+      <VBox spacing="10.0" styleClass="main-content">
+         <children>
+            <TableView fx:id="taskTable" styleClass="task-table">
+               <columns>
+                  <TableColumn fx:id="completedColumn" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" text="✓" />
+                  <TableColumn fx:id="titleColumn" minWidth="200.0" prefWidth="200.0" text="Title" />
+                  <TableColumn fx:id="descriptionColumn" minWidth="300.0" prefWidth="300.0" text="Description" />
+                  <TableColumn fx:id="priorityColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Priority" />
+                  <TableColumn fx:id="deadlineColumn" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Deadline" />
+                  <TableColumn fx:id="createdColumn" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Created" />
+                  <TableColumn fx:id="actionsColumn" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Actions" />
+               </columns>
+            </TableView>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>
