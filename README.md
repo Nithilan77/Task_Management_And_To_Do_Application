@@ -1,5 +1,95 @@
 # Task Management & To-Do Application
 
+This is a lightweight JavaFX desktop Task Management and To‑Do application using Hibernate (JPA) for persistence. It is built for demonstration and academic submission: clean UI, modular architecture, and manual database schema support for production safety.
+
+Contents
+- `src/main/java` — source code (entities, controllers, services, utils)
+- `src/main/resources` — resources (FXML, CSS, `hibernate.cfg.xml`, SQL scripts)
+- `src/main/resources/sql/create_schema_oracle.sql` — Oracle-compatible DDL (sequences, tables, triggers)
+- `docs/images` — ER & architecture diagrams (SVG)
+- `PROJECT_REPORT_DETAILED.md` — expanded project report (15-page-ready; convert to .docx)
+- `PROJECT_CODE_SNIPPETS.md` — key code snippets and explanations
+
+Prerequisites
+- Java 17+ (JDK)
+- Maven 3.6+
+- Oracle XE (or other RDBMS). For quick testing you can adapt `hibernate.cfg.xml` for H2 or Postgres.
+
+Quick start (developer)
+1. Configure database in `src/main/resources/hibernate.cfg.xml` (username/password/url).
+2. If you want to create schema manually (recommended for production), run the DDL script in `src/main/resources/sql/create_schema_oracle.sql` as a DBA or application user.
+3. Build and run:
+
+```powershell
+mvn clean package -DskipTests
+mvn javafx:run
+```
+
+Database schema (manual setup)
+- Recommended: create a dedicated schema/user `task_app` and grant minimal privileges. Example (run as SYSTEM or DBA):
+
+```sql
+CREATE USER task_app IDENTIFIED BY "ChangeMeStrongPwd1";
+GRANT CREATE SESSION, CREATE TABLE, CREATE SEQUENCE TO task_app;
+-- optionally grant UNLIMITED TABLESPACE or a specific quota
+```
+
+- Connect as `task_app` and run the SQL script `src/main/resources/sql/create_schema_oracle.sql`. The script creates sequences (`TASK_SEQ`, `USER_SEQ`, `PREFERENCE_SEQ`), tables (`users`, `tasks`, `user_preferences`), FK constraints, triggers, and verification queries.
+
+Why manual DDL?
+- The project was initially configured with `hibernate.hbm2ddl.auto=update` which can alter schemas automatically. For production or evaluation, manual DDL is safer and avoids accidental data loss or schema drift. Use `validate` in production to ensure mappings match the schema without modifying it.
+
+To switch Hibernate to validate-only mode, in `src/main/resources/hibernate.cfg.xml` change:
+
+```xml
+<property name="hibernate.hbm2ddl.auto">update</property>
+```
+
+to:
+
+```xml
+<property name="hibernate.hbm2ddl.auto">validate</property>
+```
+
+Generating the submission report (.docx)
+- I included a Markdown report `PROJECT_REPORT_DETAILED.md` that is ready for conversion to `.docx`.
+- Option A (recommended): Install Pandoc on your machine and run the provided PowerShell helper:
+
+```powershell
+# install Pandoc (one-time)
+winget install --id=Pandoc.Pandoc -e
+# convert
+cd 'C:\Users\user\IdeaProjects\Task Management and To-Do Application'
+docs\report\convert_to_docx.ps1 -Input '..\PROJECT_REPORT_DETAILED.md' -Output 'PROJECT_REPORT_DETAILED.docx'
+```
+
+- Option B: I added a Java converter (`ReportToDocx`) and necessary build configuration. If you prefer, run the converter via Maven (I can help run it here or produce the JAR):
+
+```powershell
+mvn -DskipTests package
+mvn exec:java -Dexec.mainClass=com.taskmanager.util.ReportToDocx
+# OR build a shaded jar (profile included):
+#mvn -Pmake-fat-jar -DskipTests package
+#java -jar target\TaskManagementApp-1.0-SNAPSHOT-shaded.jar
+```
+
+Notes and security
+- Never commit production DB credentials. Replace `system` in `hibernate.cfg.xml` with a dedicated application user and use environment variables for secrets.
+- Replace plaintext password storage with BCrypt before any production use.
+
+Packaging recommendations
+- For distribution, consider using `jpackage` or `jlink` to create a self-contained runtime image.
+
+Contributing & Contact
+- Fork the repo, create a feature branch, and open a PR. Include tests for new behavior.
+
+License
+- Add your preferred license (e.g., MIT) to `LICENSE` if you intend to publish this repository.
+
+Support
+- If you want me to produce the `.docx` for you directly (I can run the converter and place the file in `docs/report/`), say so and I will run the converter and provide the file.
+# Task Management & To-Do Application
+
 An elegant desktop Task Management and To-Do application built with Java, JavaFX (FXML) and Hibernate (JPA) backed persistence. The UI ships with a refined, professional stylesheet and a clean component structure for easy customization.
 
 ## Table of contents
