@@ -97,7 +97,7 @@
 
 /* -- Buttons ------------------------------------------------------------ */
 .primary-button {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, derive(-accent,20%), -accent);
+    -fx-background-color: rgb(218, 131, 24);
     -fx-text-fill: white;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
@@ -108,7 +108,7 @@
 .primary-button:hover { -fx-effect: dropshadow(gaussian, rgba(31,143,166,0.28), 10, 0, 0, 4); -fx-translate-y: -2; }
 
 .secondary-button {
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(28, 203, 51, 0.98);
     -fx-border-color: rgba(15,23,36,0.08);
     -fx-text-fill: #0f1724;
     -fx-background-radius: 10;
@@ -116,8 +116,6 @@
     -fx-padding: 10 18;
     -fx-font-weight: 600;
 }
-
-.secondary-button:hover { -fx-background-color: rgba(31,143,166,0.06); }
 
 .tertiary-button { -fx-text-fill: -accent; -fx-background-color: transparent; }
 
@@ -206,13 +204,13 @@
 
 /* -- Forms / Login ----------------------------------------------------- */
 .login-container {
-    -fx-background-color: rgba(255,255,255,0.98);
+    -fx-background-color: rgb(73, 119, 176);
     -fx-background-radius: 12;
     -fx-padding: 28;
     -fx-effect: dropshadow(gaussian, rgba(7,12,18,0.08), 14, 0, 0, 6);
 }
 
-.login-button { -fx-background-color: -accent; -fx-text-fill: white; -fx-font-weight: 700; }
+.login-button { -fx-background-color: rgb(73, 119, 176); -fx-text-fill: white; -fx-font-weight: 700; }
 
 /* -- Checkbox / selection ---------------------------------------------- */
 .check-box .box { -fx-background-color: white; -fx-border-color: rgba(15,23,36,0.08); }

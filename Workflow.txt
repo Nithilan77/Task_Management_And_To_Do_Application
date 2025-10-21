@@ -1,0 +1,126 @@
+Starting (2/3) *Provide step-by-step walkthrough*
+
+I'll mark the walkthrough task completed in the todo list so progress is tracked; expected outcome: todo list updated. 
+
+Completed (2/3) *Provide step-by-step walkthrough*
+
+I'll walk you through the entire project in simple, sequential steps — from getting the code and running it for the first time, to understanding the structure, how files interact, and how to build, test and publish. I'll keep each step short and concrete and reference the important files you already have in the repo.
+
+Start here: prerequisites
+- Install JDK 11 or newer and add it to PATH.
+- Install Maven and add `mvn` to PATH.
+- (Optional) Install an IDE such as IntelliJ IDEA or VS Code with Java support.
+
+Step 1 — Get the code
+- You already have the project locally at:
+  C:\Users\user\IdeaProjects\Task Management and To-Do Application
+- If someone else needs to clone it, they would run:
+  git clone https://github.com/<user>/<repo>.git
+
+Step 2 — Inspect the project root
+- Key files:
+  - pom.xml — Maven build configuration; dependencies and plugins live here.
+  - README.md — project overview and quick start (I added this).
+  - .gitignore — ignores target, IDE files, etc.
+- Top-level folders:
+  - java — Java sources.
+  - resources — non-code resources (FXML, CSS, SQL, config).
+  - java — unit tests (if any).
+  - target — build output (generated after mvn package).
+
+Step 3 — Understand the main entry point
+- Main class:
+  - HibernateTest.java (there is also `com.taskmanager.MainApp.java` under MainApp.java). The real application entry appears to be `com.taskmanager.MainApp`.
+  - Open `MainApp.java` to see how JavaFX is launched. It will call Application.launch(), load FXML and set up scenes.
+
+Step 4 — JavaFX views and controllers
+- FXML files describe UI layout:
+  - LoginView.fxml
+  - DashboardView.fxml
+- Controllers are Java classes that connect UI elements to logic:
+  - LoginController.java
+  - DashboardController.java
+  - TaskController.java
+- How they connect: in each FXML there's a fx:controller attribute that names the controller class. Controller methods annotated with @FXML are bound to UI controls by fx:id and event handlers.
+
+Step 5 — Styling
+- Central stylesheet: application.css
+  - This file defines the theme for header, sidebar, buttons, table, dialogs, etc.
+  - Modify this file to change colors, spacing, fonts, and theme behavior.
+
+Step 6 — Persistence (database)
+- Hibernate configuration: hibernate.cfg.xml — contains DB connection info, dialect, and mapping.
+- Entities (JPA annotated classes) live in:
+  - Task.java
+  - User.java
+  - UserPreference.java
+- Utility code:
+  - HibernateUtil.java — creates SessionFactory and provides sessions.
+  - DatabaseService.java — higher-level CRUD operations used by controllers.
+- DB initialization:
+  - database-init.sql — sample or initial SQL (schema/inserts). If you use an embedded DB or local MySQL/Postgres, ensure `hibernate.cfg.xml` matches.
+
+Step 7 — How data flows (one example: add a task)
+1. User clicks “Add New Task” (button defined in FXML).
+2. Controller (e.g., `TaskController` or DashboardController) opens a dialog or navigates to a form.
+3. User fills fields and submits.
+4. Controller invokes `DatabaseService.save(task)` (or similar), which uses `HibernateUtil.getSession()` to open a session and persist the entity.
+5. UI updates the task table to show the new task (controller reloads data).
+
+Step 8 — Running the app locally
+- From command line in project root:
+  - mvn -DskipTests package
+  - mvn javafx:run
+- Or run from your IDE by running `com.taskmanager.MainApp` as a Java application.
+
+Step 9 — Build & packaging
+- `mvn package` — produces compiled classes and packaged artifact in target.
+- For a runnable JAR with JavaFX you may need plugin config or additional assembly; the project already includes the JavaFX Maven plugin in pom.xml (verify plugin settings in pom.xml).
+
+Step 10 — Tests
+- If the project has java, run:
+  - mvn test
+- Add unit tests around `DatabaseService`, and small integration tests to ensure Hibernate mapping behaves correctly.
+
+Step 11 — Logging & troubleshooting
+- Look in pom.xml for logging dependencies (Log4j, SLF4J). If absent, system out logging may be used.
+- Common runtime issues:
+  - JavaFX module errors: ensure JavaFX is on module path if using modular JDK.
+  - Hibernate connection errors: check JDBC URL, credentials in `hibernate.cfg.xml`.
+  - CSS not applied: ensure stylesheet is loaded in Java code — typically `scene.getStylesheets().add(...)`.
+
+Step 12 — Version control & publishing
+- You already have a local git repo. To publish to GitHub:
+  1. Create a new GitHub repo (web UI) or use the GitHub API / gh CLI.
+  2. Ensure remote `origin` points to that repo:
+     - git remote set-url origin https://github.com/<you>/<repo>.git
+  3. Push:
+     - git push -u origin main
+- If push fails with `Repository not found`, create the remote repo first or authenticate with a personal access token (PAT).
+
+Step 13 — Helpful files to add (recommended)
+- `LICENSE` — add MIT or Apache if you want permissive license.
+- `.github/workflows/ci.yml` — basic GitHub Actions to build on push.
+- `CONTRIBUTING.md` — contribution guidelines.
+
+Step 14 — Next improvements you can do (pick any)
+- Add a responsive layout or improve accessibility (keyboard shortcuts).
+- Add unit tests for controllers/service logic and an H2 in-memory DB for tests.
+- Add internationalization support (resource bundles).
+- Add export/import tasks (CSV/JSON).
+- Wire GitHub Actions for CI and tests.
+
+Simple troubleshooting checklist
+- App doesn't start: run `mvn -DskipTests package` and fix compile errors.
+- Blank UI or stylesheet issues: open FXML & check CSS path; verify application.css loads.
+- DB errors: verify `hibernate.cfg.xml` and DB availability; check `database-init.sql` if using schema init.
+
+Done — summary
+- The above steps walk from initial setup to running, editing UI, understanding persistence and controllers, building, testing, and publishing.
+- If you want, I can:
+  - Produce a simple diagram of file relationships.
+  - Generate a CI workflow (GitHub Actions) to build and run tests.
+  - Create example unit tests for `DatabaseService`.
+  - Walk through a single feature end-to-end (e.g., implement task edit dialog) with code edits.
+
+Which next item would you like me to do?

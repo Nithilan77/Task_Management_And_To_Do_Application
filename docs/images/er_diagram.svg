@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <style>
+    .title { font: bold 20px sans-serif; fill: #0f1724 }
+    .entity { fill: #ffffff; stroke: #0b1b2b; stroke-width:2 }
+    .entity-title { font: bold 14px sans-serif; fill: #0b1b2b }
+    .attr { font: 12px sans-serif; fill: #153041 }
+    .fk { font: 12px sans-serif; fill: #c94b42 }
+  </style>
+
+  <text x="30" y="30" class="title">ER Diagram — Task Management</text>
+
+  <!-- User entity -->
+  <rect x="40" y="60" width="320" height="160" rx="8" ry="8" class="entity"/>
+  <text x="60" y="90" class="entity-title">User</text>
+  <text x="60" y="115" class="attr">id (PK)</text>
+  <text x="60" y="135" class="attr">email</text>
+  <text x="60" y="155" class="attr">password</text>
+  <text x="60" y="175" class="attr">display_name</text>
+  <text x="60" y="195" class="attr">last_login</text>
+
+  <!-- Task entity -->
+  <rect x="420" y="40" width="360" height="220" rx="8" ry="8" class="entity"/>
+  <text x="440" y="75" class="entity-title">Task</text>
+  <text x="440" y="100" class="attr">id (PK)</text>
+  <text x="440" y="120" class="attr">title</text>
+  <text x="440" y="140" class="attr">description</text>
+  <text x="440" y="160" class="attr">priority</text>
+  <text x="440" y="180" class="attr">deadline</text>
+  <text x="440" y="200" class="attr">completed</text>
+  <text x="440" y="220" class="attr">created_at</text>
+  <text x="440" y="240" class="attr">updated_at</text>
+  <text x="440" y="260" class="fk">user_id (FK)</text>
+
+  <!-- UserPreference entity -->
+  <rect x="820" y="60" width="320" height="140" rx="8" ry="8" class="entity"/>
+  <text x="840" y="90" class="entity-title">UserPreference</text>
+  <text x="840" y="115" class="attr">id (PK)</text>
+  <text x="840" y="135" class="attr">key</text>
+  <text x="840" y="155" class="attr">value</text>
+  <text x="840" y="175" class="fk">user_id (FK)</text>
+
+  <!-- Relationships -->
+  <line x1="360" y1="140" x2="420" y2="140" stroke="#0b1b2b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="270" y="130" class="attr">1</text>
+  <text x="390" y="130" class="attr">*</text>
+
+  <line x1="700" y1="180" x2="820" y2="140" stroke="#0b1b2b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="760" y="170" class="attr">1</text>
+  <text x="790" y="150" class="attr">*</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0b1b2b" />
+    </marker>
+  </defs>
+</svg>

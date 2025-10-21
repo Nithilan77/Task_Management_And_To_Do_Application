@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <style>
+    .title { font: bold 20px sans-serif; fill: #0f1724 }
+    .box { fill: #ffffff; stroke: #153041; stroke-width:1.5; rx:8 }
+    .label { font: bold 13px sans-serif; fill: #153041 }
+    .sub { font: 12px sans-serif; fill: #334e5e }
+  </style>
+
+  <text x="30" y="30" class="title">System Architecture — Task Management</text>
+
+  <!-- Presentation layer -->
+  <rect x="60" y="70" width="1080" height="120" rx="8" class="box" />
+  <text x="80" y="100" class="label">Presentation (JavaFX)</text>
+  <text x="80" y="125" class="sub">FXML Views (Login, Dashboard) + Controllers</text>
+
+  <!-- Service layer -->
+  <rect x="180" y="230" width="840" height="140" rx="8" class="box" />
+  <text x="200" y="260" class="label">Service Layer</text>
+  <text x="200" y="285" class="sub">DatabaseService (CRUD), SceneRouter, ConfigManager</text>
+
+  <!-- Persistence layer -->
+  <rect x="300" y="420" width="600" height="140" rx="8" class="box" />
+  <text x="320" y="450" class="label">Persistence (Hibernate / JPA)</text>
+  <text x="320" y="475" class="sub">Entities (Task, User, UserPreference), HibernateUtil (SessionFactory)</text>
+
+  <!-- DB -->
+  <rect x="80" y="420" width="140" height="120" rx="8" class="box" />
+  <text x="100" y="460" class="label">Database</text>
+  <text x="100" y="485" class="sub">H2 / Postgres / MySQL</text>
+
+  <!-- Arrows -->
+  <line x1="600" y1="190" x2="600" y2="230" stroke="#153041" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="610" y="210" class="sub">calls</text>
+
+  <line x1="600" y1="370" x2="600" y2="420" stroke="#153041" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="610" y="395" class="sub">uses</text>
+
+  <line x1="340" y1="520" x2="220" y2="520" stroke="#153041" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="250" y="540" class="sub">JDBC</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#153041" />
+    </marker>
+  </defs>
+</svg>
