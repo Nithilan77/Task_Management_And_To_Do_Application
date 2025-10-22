@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.taskmanager.controller.SettingsController">
+
+    <!-- Top header -->
+    <top>
+        <VBox spacing="10.0" styleClass="header">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <children>
+                        <Text text="Settings" fill="white" wrappingWidth="200.0">
+                            <font>
+                                <Font name="System Bold" size="24.0"/>
+                            </font>
+                        </Text>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back" fx:id="backButton" onAction="#goBack" styleClass="secondary-button"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="20.0" bottom="10.0" left="20.0" right="20.0"/>
+            </padding>
+        </VBox>
+    </top>
+
+    <!-- Center content -->
+    <center>
+        <VBox spacing="20.0" alignment="TOP_LEFT" styleClass="main-content">
+            <children>
+                <VBox spacing="10.0">
+                    <children>
+                        <Text text="Default Task Priority:" wrappingWidth="200.0" styleClass="label-text"/>
+                        <ComboBox fx:id="priorityComboBox" promptText="Select Priority" styleClass="combo-box"/>
+                        <Button text="Save Preference" fx:id="savePreferenceButton" onAction="#savePreference"
+                                styleClass="primary-button"/>
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets top="20.0" bottom="20.0" left="20.0" right="20.0"/>
+            </padding>
+        </VBox>
+    </center>
+
+</BorderPane>

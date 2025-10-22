@@ -21,6 +21,12 @@
                </children>
             </HBox>
             
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Button text="Settings" fx:id="settingsButton" onAction="#onSettings" styleClass="secondary-button"/>
+               </children>
+            </HBox>
+
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <TextField fx:id="searchField" promptText="Search tasks..." styleClass="search-field">

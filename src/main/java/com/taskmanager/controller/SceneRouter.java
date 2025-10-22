@@ -1,15 +1,16 @@
 package com.taskmanager.controller;
 
+import java.io.IOException;
+
 import com.taskmanager.config.ConfigManager;
 import com.taskmanager.entity.User;
+
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.Parent;
-import javafx.stage.Stage;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
-import java.io.IOException;
+import javafx.stage.Stage;
 
 public class SceneRouter {
     private static SceneRouter instance;
@@ -44,7 +45,29 @@ public class SceneRouter {
         // Show login screen initially
         showLogin();
     }
-    
+    public void switchToSettingsView(User user) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SettingsView.fxml"));
+        Parent root = loader.load();
+
+        // Pass current user to the controller
+        SettingsController controller = loader.getController();
+        controller.setCurrentUserId(user.getId());
+        controller.setSceneRouter(this); // pass SceneRouter reference
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        showAlert("Error", "Failed to load settings view: " + e.getMessage(), Alert.AlertType.ERROR);
+    }
+    }
+
     public void showLogin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LoginView.fxml"));
